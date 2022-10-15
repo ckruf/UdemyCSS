@@ -1,0 +1,19 @@
+body {
+  font-family: 'Alumni Sans Pinstripe', sans-serif;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h1, h2 {
+  font-family: 'Silkscreen', cursive;
+}
+
+p {
+  font-size: 2rem;
+}

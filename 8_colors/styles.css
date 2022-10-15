@@ -1,0 +1,20 @@
+body {
+  background-color: #f1f5f9;
+}
+
+h3 {
+  color: #645cff
+}
+
+p {
+  color: #64748b;
+}
+
+/* By using this 'combination of classes' selector, we don't have to care about the order of the rules for .container and .special-container. If we only used .special-container to style the div, that styling would only be applied if we defined it after the .container styling (as in lower down in this css file.) */
+.container.special-container {
+  background-color:  rgba(0, 0, 0, 0.9);
+}
+
+.container {
+  background-color: #fff;
+}
