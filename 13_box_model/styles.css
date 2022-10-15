@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+}
+
+h1, p {
+  color: white;
+}
+
+h1 {
+  background:red;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+p {
+  background: yellowgreen; 
+  border: 5px dashed blue;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-top: 2rem;
+}

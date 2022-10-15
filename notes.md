@@ -357,3 +357,77 @@ For `word-spacing` we can set a size in units.
 For `text-decoration` we can set `dashed`, `dotted`, `underline`, `none` and others. 
 
 For `text-transform` we can use `uppercase`, `capitalize` or `lowercase`.
+
+### CSS box model
+
+Every HTML element is in a box. Boxes have their content, padding, borders and a margin:
+
+<img src="./notes_assets/css_box_model.png" height="400px">
+
+#### shorthand
+
+When we define `padding` or `margin` for our element, we can either separately specify properties for `padding-top`, `padding-bottom`, `padding-left` and `padding-right`. Or, we can use a shorthand, like this:
+```
+/* adds 2rem padding all around */
+h1 {
+  padding: 2rem;
+}
+
+/* adds 2 rem padding top and bottom and 4rem padding left and right
+div {
+  padding: 2rem 4rem;
+}
+
+/* adds 1rem top, 2rem right, 3rem bottom and 4rem left
+h2 {
+  padding: 1rem 2rem 3rem 4rem;
+}
+```
+
+For borders, we have the following shortcuts:
+
+```
+/* width, style, color */
+div {
+  border: 1px solid red;
+}
+/* specific side of the border */
+div {
+  border-bottom: 1rem dashed green;
+}
+```
+
+#### margin
+
+By default, browser already has a margin. So we usually will want to add the following to all our projects:
+```
+* {
+  margin: 0;
+}
+```
+
+**Margin collapse**: margins collapse. This means that if we have two elements, one on top of the other, if we set margin-bottom for the top element and a margin-top for the bottom element, these margins do not add up together. Only the larger of the two margins is considered. 
+
+**Negative margin**: We can also give a negative margin to elements, which will make one element cover another element.
+
+#### outline
+
+Our previous CSS box model image was actually missing the outline:
+
+<img src="./notes_assets/css_outline.png">
+
+The outline behaves basically the same as the border, but it has one additional property which we can use to make interesting designs - `outline-offset`.
+
+```
+#one {
+  border: 0.2rem solid black;
+}
+
+#two {
+  outline-width: 0.2rem;
+  outline-color: black;
+  outline-style: solid;
+  outline-offset: 10px;
+}
+```
+<img src="./notes_assets/outline_example.png">

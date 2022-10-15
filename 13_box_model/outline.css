@@ -1,0 +1,27 @@
+
+
+.links {
+  margin: 3rem;
+  border: 1px solid blue;
+}
+
+a {
+  background: orangered;
+  text-decoration: none;
+  padding: 1.2rem 1.5rem;
+  color: black;
+  text-transform: uppercase;
+  margin: 0 20px;
+  /* display: inline-block; */
+}
+
+#one {
+  border: 0.2rem solid black;
+}
+
+#two {
+  outline-width: 0.2rem;
+  outline-color: black;
+  outline-style: solid;
+  outline-offset: 10px;
+}
