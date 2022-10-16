@@ -431,3 +431,61 @@ The outline behaves basically the same as the border, but it has one additional 
 }
 ```
 <img src="./notes_assets/outline_example.png">
+
+### Display property
+
+All elements have a default value for the display property. There are two main values:
+- `block` these elements always start a new line and span the full width of the screen
+- `inline` these elements do not start a new line and span only content
+
+However, we can override this default behaviour by setting the property to the value we want.
+
+#### horizontal centering
+
+- For inline elements, in order to center them, we need to target their parent element and set `text-align: center`. For a block element, this will just center the text within the element, but it won't center the element within its parent.
+
+<img src="./notes_assets/text_align_center.png" height="400px">
+
+- For block elements, we first need to give them a width and then given them a margin-left and margin-right of auto. If we only give them margin-left of auto, it will align the element to the right and vice versa. Setting both will center the element.
+
+#### width, height, margin-top and margin-bottom
+
+- For block elements, the browser respect the width, height, margin-top and margin-bottom properties. However, for inline elements, setting a value for these properties will not actually affect anything. 
+
+#### box-sizing
+
+We often add `box-sizing: border-box;` to our universal styles. The default value for `box-sizing` is `content-box`. The `box-sizing` property changes how padding affects the width and height of our element. If we have the default `content-box` setting, and we add padding of 20px to a div which has a height of 200px and a width of 200px, the actual size of the div will be 240px by 240px. If we seet `box-sizing: border-box` however, the div will remain 200px by 200px.
+
+```
+<body>
+  <div class="box-1">I'm with border-box</div>
+  <div class="box-2">I'm normal</div>
+  <div class="box-3">I'm without border-box</div>
+</body>
+```
+
+```
+.box-1, .box-2, .box-3 {
+  width: 200px;
+  height: 200px;
+  color: white;
+  font-size: 2rem;
+}
+
+.box-1 {
+  background: red;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.box-2 {
+  background: blue;
+}
+
+.box-3 {
+  background: green;
+  padding: 20px;
+}
+```
+
+<img src ="./notes_assets/border-box.png" height=400px>
