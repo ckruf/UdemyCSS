@@ -436,7 +436,8 @@ The outline behaves basically the same as the border, but it has one additional 
 
 All elements have a default value for the display property. There are two main values:
 - `block` these elements always start a new line and span the full width of the screen
-- `inline` these elements do not start a new line and span only content
+- `inline` these elements do not start a new line and span only content. The browser does not respect their height, width, top and bottom margins.
+- `inline-block` these elements also do not start a new line, but the browser does respect their width, height and top and bottom margins.
 
 However, we can override this default behaviour by setting the property to the value we want.
 
@@ -451,6 +452,7 @@ However, we can override this default behaviour by setting the property to the v
 #### width, height, margin-top and margin-bottom
 
 - For block elements, the browser respect the width, height, margin-top and margin-bottom properties. However, for inline elements, setting a value for these properties will not actually affect anything. 
+- We can fix this by setting `display: inline-block` for these elements.
 
 #### box-sizing
 
@@ -489,3 +491,11 @@ We often add `box-sizing: border-box;` to our universal styles. The default valu
 ```
 
 <img src ="./notes_assets/border-box.png" height=400px>
+
+#### hiding elements
+
+We can hide elements in a couple of different ways.
+
+- Setting `display: none` removes the element from the DOM. Its space is collapsed/taken up by the other elements.
+- Setting `opacity: 0` will make the element transparent, but leave it in the DOM and it will still take up space.
+- Setting `visibility: hidden` will hide the element, but leave it in the DOM and it will still take up space.
