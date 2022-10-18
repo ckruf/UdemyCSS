@@ -31,7 +31,8 @@ Copyright-free high-quality images
 ### Colors
 Color palettes, schemes, gradients
 - [coolors](https://coolors.co/)
-
+Linear gradients
+- [colorzilla](https://www.colorzilla.com/gradient-editor/)
 
 # CSS
 
@@ -499,3 +500,71 @@ We can hide elements in a couple of different ways.
 - Setting `display: none` removes the element from the DOM. Its space is collapsed/taken up by the other elements.
 - Setting `opacity: 0` will make the element transparent, but leave it in the DOM and it will still take up space.
 - Setting `visibility: hidden` will hide the element, but leave it in the DOM and it will still take up space.
+
+### (Background) images
+
+To set an image as background, we use the following syntax `background: url(<path to image>)`
+
+By default, our image will repeat itself in both x and y directons. We can control this behaviour using the `background-repeat` property. This can take the values of `repeat`, `no-repeat`, `repeat-x`, `repeat-y`, `space` and `round`. `space` will put some space around the background image, and `round` will repeat the image as soon as another image fits.
+
+<img src="./notes_assets/background_repeat.png" height="400px">
+
+An example of `background-repeat` values of `space` and `round`. In the second image (`round`), because there is not yet enough space to fit a second image horizontally, the image gets stretched.
+
+Typically, we will be using `no-repeat`. However, what do we do with the empty space left if we use `no-repeat`? For this, we use the `background-size` property. This has two main interesting values: `cover` and `contain`.
+
+<img src="./notes_assets/background_size.png" height="400px">
+
+`cover` will cover the whole element, even if it distorts the image. `contain` will not distort the image and therefore will not always cover the whole element.
+
+The next property is `background-position`. We can give it either descriptive values, like `center`, `left`, `right`, `bottom` and `top`. Alternatively, we can give it numeric values, like `0 0` or `20% 50%`. These values determine the position of the image from the left and from the top.
+
+The next property is `background-attachment`. This affects scrolling behaviour. If we set a `background-attachment` of `fixed`, then when scrolling the image will stay in place, while the text/content move up or down.
+
+#### linear gradients (as background image overlays)
+
+Linear gradients allow us to set up a transition from one color to another. Best shown with an example:
+
+```
+div {
+  width: 150px;
+  height: 150px;
+  margin:5px;
+}
+
+.one {
+  background: linear-gradient(red, green);
+}
+
+.two {
+  background: linear-gradient(to right, red, yellow);
+}
+
+.three {
+  background: linear-gradient(135deg, red, white, blue);
+}
+
+.four {
+  background: linear-gradient(blue 50%, yellow);
+}
+```
+
+<img src="./notes_assets/linear_gradients.png" height="400px">
+
+The first argument of the `linear-gradient` property can optionally specify a direction, which can either have a descriptive value like `to left` or a numeric value in degrees, like `135deg`. This is then followed by any number of colors, which will be used for the transitions. We can also specify a percentage for the color, which will affect what proportion of the image it takes up.
+
+**Use as overlay**
+
+If we are including a hero element with a massive background image, and we put some text in front of it, it can often be hard to read. For example if we have a relatively light image and some white text. We can use a linear gradient to solve this:
+
+```
+background: linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0, 0.4)), url(".//big_image.jpg");
+```
+
+<img src="./notes_assets/hero_with_gradient.png" height="400px">
+
+Compared this to the version with no gradient:
+
+<img src="./notes_assets/hero_no_gradient.png" height="400px">
+
+When we use a linear gradient as an overlay, we have to specify the color using an rgba value. Otherwise, the image would not be visible if the color in the gradient would not have some transparency.

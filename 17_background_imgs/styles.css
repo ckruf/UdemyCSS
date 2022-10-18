@@ -1,0 +1,24 @@
+div {
+  height: 300px;
+  color: yellow;
+  border: 1px solid red;
+}
+
+.big-img {
+  background: url("./big_image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.small-img {
+  background: url("./small_image.jpg");
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+}
+
+.folder-img {
+  background: url("./images/folder_image.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
