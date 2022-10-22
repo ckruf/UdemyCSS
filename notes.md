@@ -34,6 +34,84 @@ Color palettes, schemes, gradients
 Linear gradients
 - [colorzilla](https://www.colorzilla.com/gradient-editor/)
 
+# Patterns / often used
+
+## Overriding browser defaults
+
+```
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+```
+
+## Setting linear gradient overlay on hero element
+
+Increases readability of stuff we have over our hero element.
+
+## Setting fonts for whole body and overriding for specific elements
+
+Self explanatory.
+
+## 1px solid red border for debugging
+
+Self explanatory.
+
+## Centering
+
+### Without grid/flexbox
+
+For block level elements `margin-left: auto`, `margin-right: auto`
+For inline elements, select parent and `text-align: center`
+
+## section-center
+
+When setting up a section on our site, it can be a good idea to set up an outer `section` div and then an inner `section-center` div. Then we can make our section span the whole width of the screen, and the section-center can have a more limited width. See this example:
+
+```
+<body>
+  <div class="section">
+    <div class="section-title">
+      <h1>section title</h1>
+      <div class="title-underline"></div>
+    </div>
+    <div class="section-center">
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui culpa, aliquam ex sint labore suscipit et possimus, obcaecati deleniti eum fugiat dolores dolor eaque consectetur recusandae! Aliquid repellat totam optio, corporis quod nesciunt suscipit odit repellendus natus veritatis, debitis adipisci voluptatum ratione doloribus ea sint modi commodi impedit fugiat pariatur?</p>
+    </div>
+  </div>
+</body>
+</html>
+
+.section {
+  padding: 3rem;
+  background: #fff;
+}
+
+.section-center {
+  width: 90vw;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+}
+```
+
+This way we can limit the width of our content, so it doesn't span the whole width. While simultaneously having the section span the whole width. With the section-center, we can achieve a look like this:
+
+<img src="./notes_assets/section-center.png">
+
+Without section center, we can get either this, if we apply the styles (width and max-width) of section-center to section directly:
+
+<img src="./notes_assets/no-section-center-1.png">
+
+Or like this, if we don't include section-center or its styles at all and just have section:
+
+<img src="./notes_assets/no-section-center-2.png">
+
+## border-radius to get circular elements
+
+If we want to create a circular button, or other element, a good way to do it is to give it `border-radius` of value equal to its `height` and `width`. 
+
 # CSS
 
 ### External vs internal vs inline
@@ -568,3 +646,104 @@ Compared this to the version with no gradient:
 <img src="./notes_assets/hero_no_gradient.png" height="400px">
 
 When we use a linear gradient as an overlay, we have to specify the color using an rgba value. Otherwise, the image would not be visible if the color in the gradient would not have some transparency.
+
+
+### float
+
+Using the float property, we can take elements out of the regular document flow and place them on the left or right side of their container, allowing text and inline elements to wrap around the floated element. Without using float:
+
+```
+<div class="banner">
+    <img src="../17_background_imgs/small_image.jpg" alt="">
+    <span>Hello there</span>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita assumenda autem cumque sequi. Exercitationem ut veniam neque sunt velit, illo, quam, dolore autem ipsa non asperiores qui similique quasi voluptates laborum ab fuga sit blanditiis quaerat optio unde animi tempora eaque. Vero voluptatem quo veritatis dignissimos saepe magnam omnis ut.</p>
+</div>
+
+.banner {
+  border: 5px solid red;
+}
+```
+
+<img src="./notes_assets/no-float.png">
+
+
+The paragraph starts a new line, all the way below the image, as we would expect, since it is a block level element. The span on the other hand doesn't, as its inline. If, however, we add `float: left` to the image, we get the following:
+
+<img src="./notes_assets/float.png">
+
+The paragraph starts wrapping around the image.
+
+We can also prevent the paragraph from wrapping around the image, by giving it a `clear: left`.
+
+#### setting up multi column layout using float
+
+Before flexbox and grid, this was apparently the way to create mutli column layouts.
+
+```
+<body>
+  <div class="one">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, dicta.</p>
+  </div>
+  <div class="two">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, dicta.</p>
+  </div>
+  <div class="three">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, dicta.</p>
+  </div>
+</body>
+
+div {
+  height: 200px;
+  width: 33.33%;
+  float: left;
+}
+```
+
+### position
+
+The default value for position is `static`, this doesn't really do anything. 
+
+#### relative
+
+We can use `position: relative` in combination with setting one of the properties `top`, `bottom`, `left` and `right` to a numeric value (in pixels for example), to change the position of an element "relative" to where it would normally be. Best shown on an example. Suppose we have a page like this:
+
+<img src="./notes_assets/position_relative_before.png">
+
+If we targer the blue paragraph, and give it `position: relative` and `top: 200px`, the paragraph will shift relative to where it would normally be, like so:
+
+<img src="./notes_assets/position_relative_after.png">
+
+#### absolute
+
+By using `position: absolute`, the element will be positioned relative to its closest ancestor which has `position: relative`. Suppose we start with a page like this, where the pink elemnt is just a span inside the green paragraph:
+
+<img src="./notes_assets/position_absolute_before.png">
+
+If we give the pink span the following properties:
+
+```
+span {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+```
+
+The page will look like this: 
+
+<img src="./notes_assets/position_absolute_after.png">
+
+The span's ancestors are the green `<p>`, the yellow `<div>` and then the `<body>`. Neither the `<p>`, nor the `<div>` have `position: relative`, but the `<body>` does, so the span is placed in the top left corner of the body. If, however, we set `position: relative` on the `<div>`, the span would move to the top left corner of the `<div>` instead:
+
+<img src="./notes_assets/position_absolute_second_after.png">
+
+Also note that unlike with `position: relative` before, in this case, the space that the `<span>` used to take up is instead taken up by the text following the `<span>` in the paragraph. 
+
+#### fixed and sticky
+
+We can use `position: fixed` to make an element stay in place when scrolling. This is usually used for a nav bar, to make it stay in place, even as we scroll down the page.
+
+By setting `position: sticky`, the element starts behaving as if it had `position: fixed` once we scroll to it. So we could have a nav bar with `margin-top: 100px`, so it would not start at the top of the page. And as we would start scrolling, we would scroll past the first 100px and after that the nav bar would stay on top of the document. 
+
+### Media queries
+

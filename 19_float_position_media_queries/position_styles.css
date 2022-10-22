@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  border: 3px solid red;
+  background: yellow;
+  margin-top: 40px;
+}
+
+.nav {
+  background: red;
+  color: white;
+  font-size: 1.5rem;;
+  /* width: 100vw; */
+  margin-top: 100px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+p {
+  margin: 2rem;
+}
+
+.one {
+  background: blue;
+  color: white;
+}
+
+.two {
+  background: green;
+  color: white;
+}
+
+/* .special {
+  background: pink;
+  font-size: 20px;
+  color: #222;
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+
+.hero {
+  background: blue;
+  height: 300vh;
+}
