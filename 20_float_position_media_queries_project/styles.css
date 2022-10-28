@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+}
+
+.nav {
+  background: #222;
+  height: 4rem;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+}
+
+.nav-title {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.nav-center {
+  margin: 0 auto;
+  max-width: 1170px;
+  width: 70%;
+}
+
+.hero {
+  background: sienna;
+  position: relative;
+  min-height: calc(100vh - 4rem);
+}
+
+.hero-center {
+  width: 70%;
+  max-width: 1170px;
+  margin: 0 auto;
+  color: #fff;
+  padding: 5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.hero-center h1 {
+  text-transform: capitalize;
+  margin-bottom: 1.5rem;
+}
+
+.hero-center p {
+  max-width: 35rem;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+}
+
+.hero-btn {
+  background: none;
+  border: 1px solid white;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 1rem;
+  letter-spacing: 0.25rem;
+}
+
+.scroller {
+  height: 200vh;
+  background: red;
+}
+
+@media screen and (min-width: 768px) {
+  .hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("./hero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}

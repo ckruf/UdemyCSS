@@ -1,0 +1,17 @@
+div {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+}
+
+.one {
+  background: red;
+}
+
+.two {
+  background: snow;
+}
+
+.three {
+  background: blue;
+}

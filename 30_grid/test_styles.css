@@ -1,0 +1,22 @@
+nav {
+  height: 5rem;
+  background: #222;
+  color: #fff;
+  display: grid;
+  grid-template-areas: "a";
+  align-items: center;
+}
+
+h1, div {
+  display: inline;
+  grid-area: a;
+}
+
+h1 {
+  justify-self: center;
+}
+
+div {
+  justify-self: flex-end;
+  margin-right: 1rem;
+}
