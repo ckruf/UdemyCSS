@@ -784,6 +784,95 @@ Also note that unlike with `position: relative` before, in this case, the space 
 
 We can use `position: fixed` to make an element stay in place when scrolling. This is usually used for a nav bar, to make it stay in place, even as we scroll down the page.
 
+Setting `position: fixed` will take the element out of the normal document flow. Consider the following example:
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        .navbar{
+            border: 1px solid red;
+        }
+
+        .hero {
+            min-height: 200vh;
+            background-color: salmon;
+        }
+
+        .nav-center{
+            border: 1px solid blue;
+        }
+
+        #home {
+            border: 1px solid purple;
+        }
+
+        #nav-logo {
+            max-width: 8rem;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header id="home">
+        <!-- start of navbar -->
+        <nav class="navbar">
+            <!-- nav center to limit max width -->
+            <div class="nav-center">
+                <!-- nav header -->
+                <div class="nav-header">
+                    <img src="./logo.png" id="nav-logo" alt="" />
+                    <button type="button" class="nav-toggle" id="nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+                <!-- end of header -->
+            </div>
+            <!-- end of nav center -->
+        </nav>
+    </header>
+    <!-- end of header -->
+
+    <!-- hero -->
+    <div class="hero">
+    </div>
+</body>
+</html>
+```
+
+The nav bar has not been given `position: fixed`. And it looks as expected:
+
+<img src="./notes_assets/navbar_position_default.png" height="400px">
+
+The nav bar initially has its position property set to its default value, which places it in the "normal document flow." In this state, it behaves like a typical block-level element: it spans the entire width of its container and occupies space, pushing down elements that come after it.
+
+<img src="./notes_assets/navbar_position_default_borders.png" height="400px">
+
+And obviously, if we were to scroll down, the navbar will not stay on top of the browser window.
+
+Once we set `position: fixed`, the page looks like this:
+
+<img src="./notes_assets/navbar_position_fixed.png" height="400px">
+
+Once we set position: fixed, the element is removed from the normal document flow. This changes its layout behavior: the element no longer takes up space in its parent container, and its width adjusts to fit its content.
+
+<img src="./notes_assets/navbar_position_fixed_borders.png" height="400px">
+
+We can see that the parent `<header>` element does exist, however it appears to have a height of 0, it's just a thin purple line at the top of the screen. It behaves as though the `<nav>` element were no longer its child. And in a way, it's not, since it's been taken out of the regular document flow. 
+
+However, we can also notice that there seems to be a gap to the left of the nav's border. This is caused by the purple border of the header element. Even though the nav is taken out of the document flow, it is still affected by the styles applied to its parent. We can rectify this by setting `left: 0`. 
+
+And obviously, when we scroll down now, the nav stays on top of the window.
+
 By setting `position: sticky`, the element starts behaving as if it had `position: fixed` once we scroll to it. So we could have a nav bar with `margin-top: 100px`, so it would not start at the top of the page. And as we would start scrolling, we would scroll past the first 100px and after that the nav bar would stay on top of the document. 
 
 **Note that we must specify one of top, bottom, left, right** for sticky to work.
@@ -1147,7 +1236,7 @@ Below is `flex-start`, which clusters the items together at the start of the con
 
 Below is `flex-end`, which clusters the items together at the end of the container:
 
-<img src="./notes_assets/flex_end.png>
+<img src="./notes_assets/flex_end.png">
 
 Below is `center`, which clusters the items together, and centers them horizontaly:
 
